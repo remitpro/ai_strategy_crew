@@ -1,11 +1,14 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from pydantic import BaseModel
 import os
 
 load_dotenv()
 
 from .crew import crew
+from .report_generator import create_strategy_document
 import pdfplumber
 import io
 
@@ -19,6 +22,27 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class StrategyRequest(BaseModel):
+    strategy_content: str
+
+@app.post("/export-strategy")
+async def export_strategy(request: StrategyRequest):
+    try:
+        if not request.strategy_content:
+             raise HTTPException(status_code=400, detail="No content to export.")
+
+        doc_stream = create_strategy_document(request.strategy_content)
+        
+        return StreamingResponse(
+            doc_stream, 
+            media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            headers={"Content-Disposition": "attachment; filename=ai_strategy_roadmap.docx"}
+        )
+
+    except Exception as e:
+        print(f"Error generating doc: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/generate-strategy")
 async def generate_strategy(file: UploadFile = File(...)):

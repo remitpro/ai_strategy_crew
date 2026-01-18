@@ -189,9 +189,38 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               className="glass rounded-2xl p-8 md:p-12 border border-slate-700/50 shadow-2xl"
             >
-              <div className="flex items-center mb-6 border-b border-slate-700 pb-4">
-                <CheckCircle className="w-8 h-8 text-success mr-3" />
-                <h2 className="text-3xl font-bold text-text-primary">Strategic Roadmap</h2>
+              <div className="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
+                <div className="flex items-center">
+                  <CheckCircle className="w-8 h-8 text-success mr-3" />
+                  <h2 className="text-3xl font-bold text-text-primary">Strategic Roadmap</h2>
+                </div>
+                <button
+                  onClick={async () => {
+                    try {
+                      const response = await fetch('http://localhost:8000/export-strategy', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ strategy_content: strategy })
+                      });
+                      if (!response.ok) throw new Error("Download failed");
+                      const blob = await response.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'AI_Strategy_Roadmap.docx';
+                      document.body.appendChild(a);
+                      a.click();
+                      a.remove();
+                    } catch (e) {
+                      console.error(e);
+                      alert("Failed to download document");
+                    }
+                  }}
+                  className="flex items-center px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-white font-semibold transition-colors"
+                >
+                  <FileText className="w-5 h-5 mr-2" />
+                  Download DOCX
+                </button>
               </div>
               <div className="prose prose-invert prose-lg max-w-none">
                 <ReactMarkdown>{strategy}</ReactMarkdown>
