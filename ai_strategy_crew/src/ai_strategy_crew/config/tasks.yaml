@@ -1,0 +1,44 @@
+analyze_digital_strategy_task:
+  description: >
+    Review the provided company digital strategy and extract its strategic
+    objectives, digital priorities, and challenges. Identify areas where
+    AI can enhance or accelerate these goals.
+    Your final answer MUST be a clear and structured summary that outlines
+    AI opportunity areas and key strategic priorities.
+  expected_output: >
+    A structured analysis of the digital strategy, including goals,
+    challenges, and areas where AI can create value.
+  agent: business_transformation_analyst
+
+design_ai_opportunities_task:
+  description: >
+    Using the digital strategy analysis, identify AI use cases across
+    business domains such as operations, marketing, HR, customer experience,
+    and data analytics.
+    Your final answer MUST include the AI opportunity name, business value,
+    and estimated impact level.
+  expected_output: >
+    A detailed list of AI use cases mapped to digital goals and expected benefits.
+  agent: ai_strategist
+
+define_infrastructure_plan_task:
+  description: >
+    Design the data and infrastructure roadmap required to support
+    the AI initiatives. Include data pipeline requirements, platform
+    recommendations, and integration strategies.
+    Your final answer MUST describe the end-to-end technical setup.
+  expected_output: >
+    A technical roadmap outlining data architecture, tools, and deployment recommendations.
+  agent: data_infrastructure_expert
+
+compose_final_ai_strategy_task:
+  description: >
+    Combine all findings into a final AI Strategy document that includes:
+    - AI Vision and Alignment with Digital Strategy
+    - List of AI Opportunities
+    - Technical and Data Roadmap
+    - Implementation and Change Management Plan
+    Your final answer MUST be a cohesive 3–5 page AI strategy ready for executive presentation.
+  expected_output: >
+    A complete AI strategy document ready for presentation to company leadership.
+  agent: ai_strategist
