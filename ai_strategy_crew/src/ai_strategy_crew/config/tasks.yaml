@@ -1,44 +1,517 @@
 analyze_digital_strategy_task:
   description: >
-    Review the provided company digital strategy and extract its strategic
-    objectives, digital priorities, and challenges. Identify areas where
-    AI can enhance or accelerate these goals.
-    Your final answer MUST be a clear and structured summary that outlines
-    AI opportunity areas and key strategic priorities.
+    Conduct a comprehensive analysis of the provided digital strategy document. Your analysis must include:
+    
+    1. **Strategic Assessment**: Extract and evaluate all strategic objectives, KPIs, and success metrics
+    2. **Current State Analysis**: Identify existing digital capabilities, technology stack, and maturity level
+    3. **Gap Analysis**: Pinpoint gaps between current state and desired future state
+    4. **Opportunity Mapping**: Map specific areas where AI can accelerate digital transformation goals
+    5. **Stakeholder Analysis**: Identify key stakeholders, their priorities, and potential resistance points
+    6. **Quick Wins vs. Strategic Plays**: Categorize opportunities by implementation complexity and business impact
+    7. **Competitive Context**: Consider industry trends and competitive positioning
+    
+    Use the digital strategy content provided in the input: {digital_strategy}
+    
+    Your analysis should be structured, data-driven, and include specific examples from the strategy document.
+    Format your output with clear sections and bullet points for executive readability.
   expected_output: >
-    A structured analysis of the digital strategy, including goals,
-    challenges, and areas where AI can create value.
+    A comprehensive 3-4 page strategic analysis document that includes:
+    - Executive summary of key findings (1 paragraph)
+    - Strategic objectives breakdown with AI opportunity mapping
+    - Current state assessment with capability maturity ratings
+    - Gap analysis with prioritized recommendations
+    - Stakeholder map with change readiness assessment
+    - Quick wins (0-6 months) vs. strategic initiatives (6-24 months)
+    All findings must be specific, actionable, and tied to business outcomes.
   agent: business_transformation_analyst
 
-design_ai_opportunities_task:
+identify_ai_use_cases_task:
   description: >
-    Using the digital strategy analysis, identify AI use cases across
-    business domains such as operations, marketing, HR, customer experience,
-    and data analytics.
-    Your final answer MUST include the AI opportunity name, business value,
-    and estimated impact level.
+    Based on the strategic analysis, identify and detail specific AI use cases across all business functions.
+    For each use case, provide:
+    
+    1. **Use Case Name**: Clear, descriptive title
+    2. **Business Function**: Department/area (e.g., Marketing, Operations, Customer Service, Finance, HR)
+    3. **Problem Statement**: Specific business challenge being addressed
+    4. **AI Solution**: Detailed description of the AI approach (e.g., predictive analytics, NLP, computer vision, generative AI)
+    5. **Business Value**: Quantified benefits (cost savings, revenue increase, efficiency gains, customer satisfaction)
+    6. **Success Metrics**: KPIs to measure impact
+    7. **Implementation Complexity**: Low/Medium/High with justification
+    8. **Dependencies**: Data requirements, technical prerequisites, organizational readiness
+    9. **Timeline**: Estimated implementation duration
+    10. **Priority Score**: High/Medium/Low based on value vs. effort
+    
+    Identify at least 10-15 use cases spanning multiple business functions. Include both quick wins and 
+    transformational initiatives. Consider use cases in:
+    - Customer Experience \u0026 Personalization
+    - Operational Efficiency \u0026 Automation
+    - Predictive Analytics \u0026 Forecasting
+    - Risk Management \u0026 Fraud Detection
+    - Product Innovation \u0026 R\u0026D
+    - Employee Productivity \u0026 HR
+    - Supply Chain \u0026 Logistics
+    - Marketing \u0026 Sales Optimization
+    
+    Research current industry best practices and benchmark against competitors.
   expected_output: >
-    A detailed list of AI use cases mapped to digital goals and expected benefits.
+    A detailed AI use case catalog (5-7 pages) organized by business function, with each use case 
+    following the 10-point framework above. Include a prioritization matrix (2x2 grid: Impact vs. Effort) 
+    and a recommended implementation sequence. Use tables and visual descriptions where appropriate.
   agent: ai_strategist
 
-define_infrastructure_plan_task:
+design_technical_architecture_task:
   description: >
-    Design the data and infrastructure roadmap required to support
-    the AI initiatives. Include data pipeline requirements, platform
-    recommendations, and integration strategies.
-    Your final answer MUST describe the end-to-end technical setup.
+    Design a comprehensive technical architecture and infrastructure roadmap to support the identified AI initiatives.
+    Your deliverable must include:
+    
+    1. **Architecture Overview**: High-level architecture diagram description (data flow, components, integrations)
+    2. **Data Infrastructure**:
+       - Data sources and ingestion pipelines
+       - Data lake/warehouse architecture
+       - Data governance and quality frameworks
+       - Master data management approach
+    3. **AI/ML Platform**:
+       - Model development environment (notebooks, IDEs)
+       - Feature store and feature engineering
+       - Model training infrastructure (compute resources)
+       - MLOps pipeline (CI/CD for ML)
+       - Model registry and versioning
+       - Model monitoring and observability
+    4. **Deployment Infrastructure**:
+       - Serving infrastructure (real-time vs. batch)
+       - API gateway and microservices architecture
+       - Scalability and performance considerations
+       - Edge computing requirements (if applicable)
+    5. **Technology Stack Recommendations**:
+       - Cloud platform (AWS/Azure/GCP) with justification
+       - Specific services and tools for each component
+       - Open-source vs. commercial solutions
+       - Build vs. buy recommendations
+    6. **Integration Strategy**:
+       - Legacy system integration approach
+       - API design and management
+       - Data synchronization strategies
+    7. **Security \u0026 Compliance**:
+       - Data encryption (at rest and in transit)
+       - Access control and authentication
+       - Compliance requirements (GDPR, SOC2, etc.)
+       - Model security and adversarial protection
+    8. **Cost Estimates**:
+       - Infrastructure costs (compute, storage, networking)
+       - Licensing and subscription fees
+       - 3-year TCO projection
+    9. **Implementation Roadmap**:
+       - Phase 1: Foundation (0-6 months)
+       - Phase 2: Expansion (6-12 months)
+       - Phase 3: Optimization (12-24 months)
+    
+    Research latest cloud AI services, MLOps tools, and enterprise best practices.
   expected_output: >
-    A technical roadmap outlining data architecture, tools, and deployment recommendations.
+    A comprehensive technical architecture document (8-10 pages) including:
+    - Executive summary for non-technical stakeholders
+    - Detailed architecture descriptions with component explanations
+    - Technology stack comparison tables
+    - Cost breakdown and TCO analysis
+    - Implementation roadmap with milestones
+    - Risk assessment and mitigation strategies
+    Format for CTO/CIO presentation with clear recommendations and justifications.
   agent: data_infrastructure_expert
 
-compose_final_ai_strategy_task:
+develop_financial_model_task:
   description: >
-    Combine all findings into a final AI Strategy document that includes:
-    - AI Vision and Alignment with Digital Strategy
-    - List of AI Opportunities
-    - Technical and Data Roadmap
-    - Implementation and Change Management Plan
-    Your final answer MUST be a cohesive 3–5 page AI strategy ready for executive presentation.
+    Create a comprehensive financial analysis and business case for the AI transformation initiative.
+    Your analysis must include:
+    
+    1. **Investment Requirements**:
+       - Initial CAPEX (infrastructure, software, tools)
+       - Ongoing OPEX (cloud costs, licenses, maintenance)
+       - Talent costs (hiring, training, consulting)
+       - Change management and training programs
+       - Contingency reserves (15-20%)
+    2. **Expected Benefits**:
+       - Cost savings by use case (automation, efficiency)
+       - Revenue opportunities (new products, improved conversion)
+       - Productivity gains (time saved, faster processes)
+       - Risk reduction (fraud prevention, compliance)
+       - Customer satisfaction improvements (NPS, retention)
+    3. **Financial Projections**:
+       - Year-by-year cash flow (5-year horizon)
+       - NPV (Net Present Value) calculation
+       - IRR (Internal Rate of Return)
+       - Payback period
+       - ROI percentage by year
+    4. **Scenario Analysis**:
+       - Base case (realistic expectations)
+       - Best case (optimistic outcomes)
+       - Worst case (conservative estimates)
+       - Sensitivity analysis on key variables
+    5. **Funding Recommendations**:
+       - Budget allocation by initiative
+       - Phased funding approach
+       - Quick wins to fund strategic plays
+    6. **Risk-Adjusted Returns**:
+       - Implementation risk factors
+       - Market risk considerations
+       - Technology risk assessment
+       - Risk-adjusted NPV
+    
+    Use industry benchmarks for AI ROI and implementation costs. Be conservative in estimates.
   expected_output: >
-    A complete AI strategy document ready for presentation to company leadership.
+    A detailed financial model and business case (6-8 pages) including:
+    - Executive summary with key financial metrics
+    - Detailed cost breakdown tables
+    - Benefit quantification by use case
+    - 5-year financial projections with charts
+    - Scenario comparison table
+    - Investment recommendation with funding strategy
+    - Appendix with assumptions and calculations
+    Format for CFO and finance committee review.
+  agent: financial_analyst
+
+assess_risks_and_compliance_task:
+  description: >
+    Conduct a comprehensive risk assessment and develop governance frameworks for AI initiatives.
+    Your assessment must cover:
+    
+    1. **Regulatory Compliance**:
+       - Applicable regulations (GDPR, CCPA, AI Act, industry-specific)
+       - Compliance requirements for each AI use case
+       - Data residency and sovereignty considerations
+       - Audit trail and documentation requirements
+    2. **Ethical Considerations**:
+       - Bias detection and mitigation strategies
+       - Fairness and transparency requirements
+       - Explainability needs by use case
+       - Human oversight and human-in-the-loop requirements
+    3. **Security Risks**:
+       - Data breach vulnerabilities
+       - Model poisoning and adversarial attacks
+       - API security concerns
+       - Third-party vendor risks
+    4. **Operational Risks**:
+       - Model drift and performance degradation
+       - System downtime and availability
+       - Data quality and integrity issues
+       - Dependency on key personnel
+    5. **Reputational Risks**:
+       - Public perception of AI use
+       - Customer trust considerations
+       - Media and PR implications
+       - Brand impact assessment
+    6. **Governance Framework**:
+       - AI ethics board structure
+       - Decision-making authority and escalation
+       - Model approval process
+       - Ongoing monitoring and review cycles
+       - Incident response procedures
+    7. **Mitigation Strategies**:
+       - Specific controls for each risk category
+       - Monitoring and detection mechanisms
+       - Response and remediation plans
+       - Insurance and liability considerations
+    
+    Reference industry standards (NIST AI Framework, ISO/IEC 42001, etc.)
+  expected_output: >
+    A comprehensive risk and governance document (6-8 pages) including:
+    - Executive risk summary with heat map
+    - Detailed risk register with likelihood and impact ratings
+    - Compliance checklist by regulation
+    - AI governance framework with roles and responsibilities
+    - Mitigation strategies with implementation timelines
+    - Ongoing monitoring and reporting recommendations
+    Format for legal counsel, compliance officers, and risk committee.
+  agent: risk_compliance_officer
+
+design_change_management_plan_task:
+  description: >
+    Develop a comprehensive change management and organizational readiness strategy for AI adoption.
+    Your plan must include:
+    
+    1. **Stakeholder Engagement**:
+       - Stakeholder mapping (power/interest grid)
+       - Communication strategy by stakeholder group
+       - Executive sponsorship model
+       - Change champion network
+    2. **Organizational Readiness Assessment**:
+       - Current AI literacy and skills inventory
+       - Cultural readiness for AI adoption
+       - Process maturity evaluation
+       - Technology readiness assessment
+    3. **Skills Development Program**:
+       - AI literacy training for all employees
+       - Technical upskilling for IT and data teams
+       - Business user training by use case
+       - Leadership AI strategy workshops
+       - Certification and career path development
+    4. **Communication Plan**:
+       - Launch communication strategy
+       - Regular update cadence (newsletters, town halls)
+       - Success story sharing
+       - Feedback mechanisms
+       - Addressing concerns and resistance
+    5. **Adoption Strategy**:
+       - Pilot program design
+       - Early adopter identification
+       - Phased rollout approach
+       - User acceptance testing
+       - Feedback loops and iteration
+    6. **Organizational Structure**:
+       - AI Center of Excellence (CoE) design
+       - Roles and responsibilities (AI Product Owners, ML Engineers, Data Scientists)
+       - Governance committees
+       - Cross-functional collaboration model
+    7. **Success Metrics**:
+       - Adoption rate tracking
+       - User satisfaction scores
+       - Productivity impact measurements
+       - Cultural change indicators
+       - Training completion rates
+    8. **Resistance Management**:
+       - Common resistance patterns
+       - Mitigation strategies
+       - Support systems and resources
+    
+    Draw from change management frameworks (ADKAR, Kotter's 8-Step, Prosci)
+  expected_output: >
+    A detailed change management plan (7-9 pages) including:
+    - Executive summary of change approach
+    - Stakeholder analysis with engagement strategies
+    - Comprehensive training curriculum
+    - Communication plan with timeline
+    - Organizational design recommendations
+    - Adoption roadmap with milestones
+    - Success metrics dashboard design
+    - Risk mitigation for organizational resistance
+    Format for CHRO, COO, and transformation office.
+  agent: change_management_specialist
+
+conduct_competitive_analysis_task:
+  description: >
+    Research and analyze how competitors and industry leaders are leveraging AI, and identify 
+    opportunities for competitive differentiation. Your analysis must include:
+    
+    1. **Competitor AI Initiatives**:
+       - Identify 5-7 key competitors
+       - Document their known AI use cases and capabilities
+       - Assess their AI maturity level
+       - Identify their competitive advantages from AI
+    2. **Industry Benchmarking**:
+       - Industry-wide AI adoption trends
+       - Common use cases by industry vertical
+       - Emerging AI applications
+       - Best-in-class examples
+    3. **Technology Trends**:
+       - Latest AI/ML technologies relevant to the industry
+       - Emerging capabilities (Generative AI, Multimodal AI, etc.)
+       - Technology adoption curves
+       - Future outlook (3-5 years)
+    4. **Differentiation Opportunities**:
+       - Gaps in competitor AI strategies
+       - Unique opportunities for the organization
+       - First-mover advantages
+       - Defensive AI initiatives
+    5. **Partnership Ecosystem**:
+       - Potential technology partners
+       - Academic collaborations
+       - Industry consortiums
+       - Vendor landscape
+    
+    Use web research to gather competitive intelligence and industry reports.
+  expected_output: >
+    A competitive intelligence report (4-5 pages) including:
+    - Executive summary of competitive landscape
+    - Competitor comparison matrix
+    - Industry trend analysis with implications
+    - Differentiation strategy recommendations
+    - Partnership opportunities
+    - Strategic positioning recommendations
+    Format for strategy team and executive leadership.
+  agent: ai_strategist
+
+create_implementation_roadmap_task:
+  description: >
+    Synthesize all previous analyses into a detailed, actionable implementation roadmap.
+    Your roadmap must include:
+    
+    1. **Phased Approach**:
+       - **Phase 1 - Foundation (Months 0-6)**:
+         * Quick win use cases
+         * Infrastructure setup
+         * Team building and training
+         * Governance establishment
+         * Key milestones and deliverables
+       - **Phase 2 - Expansion (Months 6-12)**:
+         * Medium complexity use cases
+         * Platform scaling
+         * Process optimization
+         * Expanded training
+         * Key milestones and deliverables
+       - **Phase 3 - Transformation (Months 12-24)**:
+         * Strategic AI initiatives
+         * Advanced capabilities
+         * Organization-wide adoption
+         * Continuous improvement
+         * Key milestones and deliverables
+    2. **Detailed Project Plans**:
+       - Top 5 priority initiatives with detailed plans
+       - Work breakdown structure
+       - Resource requirements
+       - Dependencies and critical path
+       - Risk factors
+    3. **Governance and Decision Points**:
+       - Stage-gate review process
+       - Go/no-go decision criteria
+       - Success metrics by phase
+       - Escalation procedures
+    4. **Resource Plan**:
+       - Team composition by phase
+       - Hiring plan and timeline
+       - Training schedule
+       - Vendor engagement strategy
+    5. **Budget Allocation**:
+       - Quarterly budget breakdown
+       - Cost tracking and controls
+       - Contingency management
+    
+    Create a realistic, executable roadmap that balances ambition with pragmatism.
+  expected_output: >
+    A comprehensive implementation roadmap (8-10 pages) including:
+    - Visual timeline (Gantt chart description)
+    - Phase-by-phase breakdown with objectives
+    - Detailed project plans for top priorities
+    - Resource and budget allocation
+    - Governance framework
+    - Risk management approach
+    - Success criteria and KPIs
+    Format for program management office and executive steering committee.
+  agent: ai_strategist
+
+create_executive_summary_task:
+  description: >
+    Create a compelling executive summary that synthesizes the entire AI strategy into a 
+    concise, board-ready presentation. Your summary must include:
+    
+    1. **Strategic Context** (1 paragraph):
+       - Why AI matters for this organization now
+       - Alignment with digital strategy and business goals
+       - Competitive imperative
+    2. **Opportunity Overview** (1 paragraph):
+       - Total addressable value from AI initiatives
+       - Key opportunity areas
+       - Expected business impact
+    3. **Recommended Approach** (2-3 paragraphs):
+       - Strategic priorities
+       - Phased implementation approach
+       - Quick wins and long-term plays
+    4. **Investment Requirements** (1 paragraph):
+       - Total investment over 24 months
+       - Expected ROI and payback period
+       - Funding recommendation
+    5. **Key Risks and Mitigations** (1 paragraph):
+       - Top 3-5 risks
+       - Mitigation strategies
+       - Governance approach
+    6. **Success Metrics** (bullet points):
+       - 5-7 key KPIs to track progress
+       - Target outcomes by phase
+    7. **Call to Action** (1 paragraph):
+       - Immediate next steps
+       - Decision required from leadership
+       - Timeline for action
+    
+    Write in clear, non-technical language suitable for board members and C-suite executives.
+    Focus on business value, strategic positioning, and actionable recommendations.
+  expected_output: >
+    A powerful 2-page executive summary that:
+    - Captures attention with compelling business case
+    - Clearly articulates the opportunity and approach
+    - Provides confidence through thorough analysis
+    - Drives decision-making with clear recommendations
+    - Suitable for board presentation or investor briefing
+    Use strong, confident language and data-driven assertions.
+  agent: ai_strategist
+
+compile_final_strategy_document_task:
+  description: >
+    Compile all analyses, recommendations, and plans into a comprehensive, enterprise-grade 
+    AI Strategy document. The final document must be:
+    
+    **Structure**:
+    1. **Executive Summary** (2 pages)
+       - Use the executive summary from the previous task
+    2. **Strategic Context** (3-4 pages)
+       - Digital strategy analysis
+       - Competitive landscape
+       - AI opportunity assessment
+    3. **AI Use Case Portfolio** (6-8 pages)
+       - Detailed use case catalog
+       - Prioritization framework
+       - Implementation sequence
+    4. **Technical Architecture \u0026 Infrastructure** (8-10 pages)
+       - Architecture overview
+       - Technology stack recommendations
+       - Implementation roadmap
+       - Cost estimates
+    5. **Financial Analysis \u0026 Business Case** (6-8 pages)
+       - Investment requirements
+       - Expected benefits and ROI
+       - Scenario analysis
+       - Funding recommendations
+    6. **Risk, Governance \u0026 Compliance** (6-8 pages)
+       - Risk assessment
+       - Compliance requirements
+       - Governance framework
+       - Mitigation strategies
+    7. **Change Management \u0026 Adoption** (7-9 pages)
+       - Organizational readiness
+       - Training and development
+       - Communication plan
+       - Adoption strategy
+    8. **Implementation Roadmap** (8-10 pages)
+       - Phased approach
+       - Detailed project plans
+       - Resource requirements
+       - Success metrics
+    9. **Appendices**:
+       - Glossary of AI terms
+       - Detailed financial models
+       - Architecture diagrams
+       - Reference materials
+    
+    **Quality Standards**:
+    - Professional, executive-level writing
+    - Consistent formatting and structure
+    - Data-driven with specific examples
+    - Actionable recommendations
+    - Clear visualizations (described in text)
+    - Proper citations and references
+    
+    **Tone**:
+    - Confident but realistic
+    - Strategic and forward-thinking
+    - Balanced (opportunities and risks)
+    - Action-oriented
+    
+    Ensure the document flows logically, builds a compelling narrative, and provides 
+    everything executives need to make informed decisions about AI investments.
+    
+    The final output should be formatted in markdown with clear headers, bullet points,
+    tables, and structured sections that will render beautifully in the Word document.
+  expected_output: >
+    A comprehensive, enterprise-grade AI Strategy document (50-70 pages) that:
+    - Provides complete analysis from strategy to execution
+    - Addresses all stakeholder concerns (business, technical, financial, risk, organizational)
+    - Offers clear, actionable recommendations
+    - Includes detailed implementation guidance
+    - Meets the quality standards of top-tier consulting firms (McKinsey, BCG, Bain)
+    - Is ready for board presentation and executive decision-making
+    
+    The document should be formatted in markdown with:
+    - Clear heading hierarchy (# for main sections, ## for subsections, ### for details)
+    - Bullet points for lists
+    - Tables for comparisons and data
+    - Bold for emphasis on key points
+    - Proper spacing and readability
+    
+    This is the final deliverable that will be converted to a professional Word document.
   agent: ai_strategist
